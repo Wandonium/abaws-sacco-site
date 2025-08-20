@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Calculator - Mumias Abaws Sacco</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <!-- Top Bar -->
+        <div class="bg-green-700 text-white py-2 px-4 sm:px-6 lg:px-8">
+            <div class="container mx-auto flex justify-between items-center text-sm">
+                <div class="flex items-center space-x-4">
+                    <a href="tel:+254724346484" class="hover:text-green-200 flex items-center space-x-1">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>+254 724 346 484</span>
+                    </a>
+                    <a href="mailto:mumiasabaws1@gmail.com" class="hover:text-green-200 hidden md:flex items-center space-x-1">
+                        <i class="fas fa-envelope"></i>
+                        <span>mumiasabaws1@gmail.com</span>
+                    </a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="#" class="hover:text-green-200"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="hover:text-green-200"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="hover:text-green-200"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="bg-white text-green-800 px-3 py-1 rounded-md font-semibold hover:bg-gray-200 transition duration-300">Member Portal</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Navigation -->
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <a href="index.html">
+                <img src="./logo.png" alt="Mumias Abaws Sacco Logo" class="h-16 w-auto">
+            </a>
+            <div class="hidden lg:flex space-x-8 items-center">
+                <a href="index.html" class="text-gray-600 hover:text-green-600 font-medium">Home</a>
+                <a href="index.html#about-us" class="text-gray-600 hover:text-green-600 font-medium">About Us</a>
+                <a href="index.html#our-services" class="text-gray-600 hover:text-green-600 font-medium">Services</a>
+                <a href="index.html#our-products" class="text-gray-600 hover:text-green-600 font-medium">Products</a>
+                <a href="#" class="text-gray-600 hover:text-green-600 font-medium">Downloads</a>
+                <a href="#contact-us" class="text-gray-600 hover:text-green-600 font-medium">Contact Us</a>
+            </div>
+            <button class="lg:hidden text-green-700">
+                <i class="fas fa-bars fa-2x"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Loan Calculator Section -->
+    <main class="py-20">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+                <h1 class="text-3xl font-bold text-center text-gray-800 mb-8">Loan Calculator</h1>
+                <form id="loan-form" class="space-y-6">
+                    <div>
+                        <label for="loan-amount" class="block text-sm font-medium text-gray-700">Loan Amount (KSh)</label>
+                        <input type="number" id="loan-amount" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500" required>
+                    </div>
+                    <div>
+                        <label for="interest-rate" class="block text-sm font-medium text-gray-700">Annual Interest Rate (%)</label>
+                        <input type="number" id="interest-rate" step="0.1" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500" required>
+                    </div>
+                    <div>
+                        <label for="loan-term" class="block text-sm font-medium text-gray-700">Loan Term (Years)</label>
+                        <input type="number" id="loan-term" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500" required>
+                    </div>
+                    <button type="submit" class="w-full bg-green-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-green-700 transition duration-300 text-lg">Calculate</button>
+                </form>
+                <div id="results" class="mt-8 pt-6 border-t border-gray-200 hidden">
+                    <h2 class="text-2xl font-bold text-center text-gray-800 mb-4">Results</h2>
+                    <div class="space-y-4">
+                        <div class="flex justify-between text-lg">
+                            <span class="font-medium">Monthly Payment:</span>
+                            <span id="monthly-payment" class="font-bold text-green-700"></span>
+                        </div>
+                        <div class="flex justify-between text-lg">
+                            <span class="font-medium">Total Payment:</span>
+                            <span id="total-payment" class="font-bold"></span>
+                        </div>
+                        <div class="flex justify-between text-lg">
+                            <span class="font-medium">Total Interest:</span>
+                            <span id="total-interest" class="font-bold"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#D7F2BA] text-gray-800" id="contact-us">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Mumias Abaws Sacco</h3>
+                    <p class="text-gray-700">Your trusted partner in financial empowerment. We are committed to providing quality services to our members.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html#about-us" class="text-gray-700 hover:text-gray-900">About Us</a></li>
+                        <li><a href="loan-calculator.html" class="text-gray-700 hover:text-gray-900">Loan Calculator</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-gray-900">FAQs</a></li>
+                        <li><a href="#" class="text-gray-700 hover:text-gray-900">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Contact Us</h3>
+                    <ul class="space-y-2 text-gray-700">
+                        <li class="flex items-start"><i class="fas fa-map-marker-alt mt-1 mr-2"></i><span>Mumias, Kenya</span></li>
+                        <li class="flex items-start"><i class="fas fa-phone-alt mt-1 mr-2"></i><span>+254 724 346 484</span></li>
+                        <li class="flex items-start"><i class="fas fa-envelope mt-1 mr-2"></i><span>mumiasabaws1@gmail.com</span></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Follow Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-700 hover:text-gray-900 text-2xl"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-700 hover:text-gray-900 text-2xl"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-700 hover:text-gray-900 text-2xl"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="text-gray-700 hover:text-gray-900 text-2xl"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 border-t border-[#C2E0A7] pt-6 text-center text-gray-700 text-sm">
+                <p>&copy; <span id="copyright-year"></span> Mumias Abaws Sacco Society Ltd. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('loan-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Show results section
+            document.getElementById('results').classList.remove('hidden');
+
+            // Get values from form
+            const amount = parseFloat(document.getElementById('loan-amount').value);
+            const interest = parseFloat(document.getElementById('interest-rate').value) / 100 / 12;
+            const years = parseFloat(document.getElementById('loan-term').value);
+
+            // Calculate
+            const principal = amount;
+            const numberOfPayments = years * 12;
+            const x = Math.pow(1 + interest, numberOfPayments);
+            const monthly = (principal * x * interest) / (x - 1);
+
+            if (isFinite(monthly)) {
+                const monthlyPayment = monthly.toFixed(2);
+                const totalPayment = (monthly * numberOfPayments).toFixed(2);
+                const totalInterest = (totalPayment - principal).toFixed(2);
+
+                // Display results
+                document.getElementById('monthly-payment').textContent = `KSh ${monthlyPayment}`;
+                document.getElementById('total-payment').textContent = `KSh ${totalPayment}`;
+                document.getElementById('total-interest').textContent = `KSh ${totalInterest}`;
+            } else {
+                // Display error or clear fields if calculation is not possible
+                 document.getElementById('monthly-payment').textContent = 'Invalid Input';
+                 document.getElementById('total-payment').textContent = '';
+                 document.getElementById('total-interest').textContent = '';
+            }
+        });
+        document.getElementById('copyright-year').innerText = new Date().getFullYear();
+        // Center scroll for #contact-us link
+        document.querySelectorAll('a[href="#contact-us"]').forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                var section = document.getElementById('contact-us');
+                if (section) {
+                    var rect = section.getBoundingClientRect();
+                    var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                    var sectionCenter = rect.top + scrollTop + (rect.height / 2) - (window.innerHeight / 2);
+                    window.scrollTo({ top: sectionCenter, behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

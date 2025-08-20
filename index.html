@@ -21,7 +21,7 @@
 <body class="bg-gray-50">
 
     <!-- Header -->
-    <header class="bg-white shadow-md sticky top-0 z-50">
+    <header class="bg-white shadow-md sticky top-0 z-50" id="home">
         <!-- Top Bar -->
         <div class="bg-green-700 text-white py-2 px-4 sm:px-6 lg:px-8">
             <div class="container mx-auto flex justify-between items-center text-sm">
@@ -50,7 +50,7 @@
                 <img src="./logo.png" alt="Mumias Abaws Sacco Logo" class="h-16 w-auto">
             </a>
             <div class="hidden lg:flex space-x-8 items-center">
-                <a href="#" class="text-gray-600 hover:text-green-600 font-medium">Home</a>
+                <a href="#home" class="text-gray-600 hover:text-green-600 font-medium">Home</a>
                 <a href="#about-us" class="text-gray-600 hover:text-green-600 font-medium">About Us</a>
                 <a href="#our-services" class="text-gray-600 hover:text-green-600 font-medium">Services</a>
                 <a href="#our-products" class="text-gray-600 hover:text-green-600 font-medium">Products</a>
@@ -263,8 +263,8 @@
                 <div>
                     <h3 class="text-xl font-bold mb-4">Quick Links</h3>
                     <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-700 hover:text-white">About Us</a></li>
-                        <li><a href="#" class="text-gray-700 hover:text-white">Loan Calculator</a></li>
+                        <li><a href="#about-us" class="text-gray-700 hover:text-white">About Us</a></li>
+                        <li><a href="./loanCalculator.html" class="text-gray-700 hover:text-white">Loan Calculator</a></li>
                         <li><a href="#" class="text-gray-700 hover:text-white">FAQs</a></li>
                         <li><a href="#" class="text-gray-700 hover:text-white">Blog</a></li>
                     </ul>
@@ -296,5 +296,67 @@
 </body>
 <script>
     document.getElementById('copyright-year').innerText = new Date().getFullYear();
+    // Center scroll for #about-us link
+    document.querySelectorAll('a[href="#about-us"]').forEach(function(link) {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            var section = document.getElementById('about-us');
+            if (section) {
+                var rect = section.getBoundingClientRect();
+                var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                var sectionCenter = rect.top + scrollTop + (rect.height / 2) - (window.innerHeight / 2) - (200);
+                window.scrollTo({ top: sectionCenter, behavior: 'smooth' });
+            }
+        });
+    });
+    // Center scroll for #our-products link
+    document.querySelectorAll('a[href="#our-products"]').forEach(function(link) {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            var section = document.getElementById('our-products');
+            if (section) {
+                var rect = section.getBoundingClientRect();
+                var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                var sectionCenter = rect.top + scrollTop + (rect.height / 2) - (window.innerHeight / 2) - (200);
+                window.scrollTo({ top: sectionCenter, behavior: 'smooth' });
+            }
+        });
+    });
+    // Center scroll for #our-services link
+    document.querySelectorAll('a[href="#our-services"]').forEach(function(link) {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            var section = document.getElementById('our-services');
+            if (section) {
+                var rect = section.getBoundingClientRect();
+                var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                var sectionCenter = rect.top + scrollTop + (rect.height / 2) - (window.innerHeight / 2) - (200);
+                window.scrollTo({ top: sectionCenter, behavior: 'smooth' });
+            }
+        });
+    });
+    // Center scroll for #contact-us link
+    document.querySelectorAll('a[href="#contact-us"]').forEach(function(link) {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            var section = document.getElementById('contact-us');
+            if (section) {
+                var rect = section.getBoundingClientRect();
+                var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                var sectionCenter = rect.top + scrollTop + (rect.height / 2) - (window.innerHeight / 2);
+                window.scrollTo({ top: sectionCenter, behavior: 'smooth' });
+            }
+        });
+    });
+    // Center scroll for #home link
+    document.querySelectorAll('a[href="#home"]').forEach(function(link) {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            var section = document.getElementById('home');
+            if (section) {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        });
+    });
 </script>
 </html>
