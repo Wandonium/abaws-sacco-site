@@ -3,13 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loan Calculator - Mumias Abaws Sacco</title>
+    <title>FAQs - Mumias Abaws Sacco</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body {
             font-family: 'Inter', sans-serif;
+        }
+        .faq-answer {
+            display: none;
+            transition: max-height 0.3s ease-out;
+        }
+        .faq-question.active + .faq-answer {
+            display: block;
+        }
+        .faq-question .icon {
+            transition: transform 0.3s ease;
+        }
+        .faq-question.active .icon {
+            transform: rotate(180deg);
         }
     </style>
 </head>
@@ -34,7 +47,7 @@
                     <a href="#" class="hover:text-green-200"><i class="fab fa-facebook-f"></i></a>
                     <a href="#" class="hover:text-green-200"><i class="fab fa-twitter"></i></a>
                     <a href="#" class="hover:text-green-200"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#" class="bg-white text-green-800 px-3 py-1 rounded-md font-semibold hover:bg-gray-200 transition duration-300">Member Portal</a>
+                    <a href="member-portal-coming-soon.html" class="bg-white text-green-800 px-3 py-1 rounded-md font-semibold hover:bg-gray-200 transition duration-300">Member Portal</a>
                 </div>
             </div>
         </div>
@@ -49,7 +62,7 @@
                 <a href="index.html#about-us" class="text-gray-600 hover:text-green-600 font-medium">About Us</a>
                 <a href="index.html#our-services" class="text-gray-600 hover:text-green-600 font-medium">Services</a>
                 <a href="index.html#our-products" class="text-gray-600 hover:text-green-600 font-medium">Products</a>
-                <a href="#" class="text-gray-600 hover:text-green-600 font-medium">Downloads</a>
+                <a href="index.html#downloads" class="text-gray-600 hover:text-green-600 font-medium">Downloads</a>
                 <a href="#contact-us" class="text-gray-600 hover:text-green-600 font-medium">Contact Us</a>
             </div>
             <button class="lg:hidden text-green-700">
@@ -58,40 +71,60 @@
         </nav>
     </header>
 
-    <!-- Loan Calculator Section -->
+    <!-- FAQs Section -->
     <main class="py-20">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-lg">
-                <h1 class="text-3xl font-bold text-center text-gray-800 mb-8">Loan Calculator</h1>
-                <form id="loan-form" class="space-y-6">
-                    <div>
-                        <label for="loan-amount" class="block text-sm font-medium text-gray-700">Loan Amount (KSh)</label>
-                        <input type="number" id="loan-amount" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500" required>
-                    </div>
-                    <div>
-                        <label for="interest-rate" class="block text-sm font-medium text-gray-700">Annual Interest Rate (%)</label>
-                        <input type="number" id="interest-rate" step="0.1" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500" required>
-                    </div>
-                    <div>
-                        <label for="loan-term" class="block text-sm font-medium text-gray-700">Loan Term (Years)</label>
-                        <input type="number" id="loan-term" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500" required>
-                    </div>
-                    <button type="submit" class="w-full bg-green-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-green-700 transition duration-300 text-lg">Calculate</button>
-                </form>
-                <div id="results" class="mt-8 pt-6 border-t border-gray-200 hidden">
-                    <h2 class="text-2xl font-bold text-center text-gray-800 mb-4">Results</h2>
-                    <div class="space-y-4">
-                        <div class="flex justify-between text-lg">
-                            <span class="font-medium">Monthly Payment:</span>
-                            <span id="monthly-payment" class="font-bold text-green-700"></span>
+            <div class="max-w-4xl mx-auto">
+                <h1 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">Frequently Asked Questions</h1>
+                <div class="space-y-4">
+                    <!-- FAQ Item 1 -->
+                    <div class="bg-white rounded-lg shadow-md">
+                        <button class="faq-question w-full text-left p-6 flex justify-between items-center focus:outline-none">
+                            <span class="text-lg font-semibold text-gray-800">How do I become a member?</span>
+                            <i class="fas fa-chevron-down icon text-green-600"></i>
+                        </button>
+                        <div class="faq-answer px-6 pb-6 text-gray-600">
+                            <p>To become a member, you need to fill out the membership application form available on our downloads page, attach a copy of your ID, and pay the required membership fee. Our team will then process your application.</p>
                         </div>
-                        <div class="flex justify-between text-lg">
-                            <span class="font-medium">Total Payment:</span>
-                            <span id="total-payment" class="font-bold"></span>
+                    </div>
+                    <!-- FAQ Item 2 -->
+                    <div class="bg-white rounded-lg shadow-md">
+                        <button class="faq-question w-full text-left p-6 flex justify-between items-center focus:outline-none">
+                            <span class="text-lg font-semibold text-gray-800">What are the benefits of joining the Sacco?</span>
+                            <i class="fas fa-chevron-down icon text-green-600"></i>
+                        </button>
+                        <div class="faq-answer px-6 pb-6 text-gray-600">
+                            <p>Members enjoy numerous benefits including access to affordable loans, earning annual dividends on shares and interest on deposits, opportunities for savings, and being part of a supportive community focused on financial growth.</p>
                         </div>
-                        <div class="flex justify-between text-lg">
-                            <span class="font-medium">Total Interest:</span>
-                            <span id="total-interest" class="font-bold"></span>
+                    </div>
+                    <!-- FAQ Item 3 -->
+                    <div class="bg-white rounded-lg shadow-md">
+                        <button class="faq-question w-full text-left p-6 flex justify-between items-center focus:outline-none">
+                            <span class="text-lg font-semibold text-gray-800">How do I apply for a loan?</span>
+                            <i class="fas fa-chevron-down icon text-green-600"></i>
+                        </button>
+                        <div class="faq-answer px-6 pb-6 text-gray-600">
+                            <p>You can apply for a loan by filling out the loan application form and submitting it to our offices. You must be a member and have met the minimum savings requirements for the specific loan product you are interested in.</p>
+                        </div>
+                    </div>
+                    <!-- FAQ Item 4 -->
+                    <div class="bg-white rounded-lg shadow-md">
+                        <button class="faq-question w-full text-left p-6 flex justify-between items-center focus:outline-none">
+                            <span class="text-lg font-semibold text-gray-800">How long does it take to process a loan?</span>
+                            <i class="fas fa-chevron-down icon text-green-600"></i>
+                        </button>
+                        <div class="faq-answer px-6 pb-6 text-gray-600">
+                            <p>Loan processing times vary depending on the type of loan. Emergency loans are typically processed within 24-48 hours, while development and business loans may take a few days to a week, subject to meeting all requirements.</p>
+                        </div>
+                    </div>
+                    <!-- FAQ Item 5 -->
+                    <div class="bg-white rounded-lg shadow-md">
+                        <button class="faq-question w-full text-left p-6 flex justify-between items-center focus:outline-none">
+                            <span class="text-lg font-semibold text-gray-800">Can I increase my monthly savings contribution?</span>
+                            <i class="fas fa-chevron-down icon text-green-600"></i>
+                        </button>
+                        <div class="faq-answer px-6 pb-6 text-gray-600">
+                            <p>Yes, you can increase your monthly savings contribution at any time. Simply fill out a share contribution amendment form or contact our member services team to make the adjustment.</p>
                         </div>
                     </div>
                 </div>
@@ -110,9 +143,9 @@
                 <div>
                     <h3 class="text-xl font-bold mb-4">Quick Links</h3>
                     <ul class="space-y-2">
-                        <li><a href="index.html#about-us" class="text-gray-700 hover:text-gray-900">About Us</a></li>
+                        <li><a href="index.html" class="text-gray-700 hover:text-gray-900">About Us</a></li>
                         <li><a href="loan-calculator.html" class="text-gray-700 hover:text-gray-900">Loan Calculator</a></li>
-                        <li><a href="faqs.html" class="text-gray-700 hover:text-gray-900">FAQs</a></li>
+                        <li><a href="faq.html" class="text-gray-700 hover:text-gray-900">FAQs</a></li>
                         <li><a href="#" class="text-gray-700 hover:text-gray-900">Blog</a></li>
                     </ul>
                 </div>
@@ -141,53 +174,15 @@
     </footer>
 
     <script>
-        document.getElementById('loan-form').addEventListener('submit', function(e) {
-            e.preventDefault();
+        const faqQuestions = document.querySelectorAll('.faq-question');
 
-            // Show results section
-            document.getElementById('results').classList.remove('hidden');
-
-            // Get values from form
-            const amount = parseFloat(document.getElementById('loan-amount').value);
-            const interest = parseFloat(document.getElementById('interest-rate').value) / 100 / 12;
-            const years = parseFloat(document.getElementById('loan-term').value);
-
-            // Calculate
-            const principal = amount;
-            const numberOfPayments = years * 12;
-            const x = Math.pow(1 + interest, numberOfPayments);
-            const monthly = (principal * x * interest) / (x - 1);
-
-            if (isFinite(monthly)) {
-                const monthlyPayment = monthly.toFixed(2);
-                const totalPayment = (monthly * numberOfPayments).toFixed(2);
-                const totalInterest = (totalPayment - principal).toFixed(2);
-
-                // Display results
-                document.getElementById('monthly-payment').textContent = `KSh ${monthlyPayment}`;
-                document.getElementById('total-payment').textContent = `KSh ${totalPayment}`;
-                document.getElementById('total-interest').textContent = `KSh ${totalInterest}`;
-            } else {
-                // Display error or clear fields if calculation is not possible
-                 document.getElementById('monthly-payment').textContent = 'Invalid Input';
-                 document.getElementById('total-payment').textContent = '';
-                 document.getElementById('total-interest').textContent = '';
-            }
-        });
-        document.getElementById('copyright-year').innerText = new Date().getFullYear();
-        // Center scroll for #contact-us link
-        document.querySelectorAll('a[href="#contact-us"]').forEach(function(link) {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                var section = document.getElementById('contact-us');
-                if (section) {
-                    var rect = section.getBoundingClientRect();
-                    var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                    var sectionCenter = rect.top + scrollTop + (rect.height / 2) - (window.innerHeight / 2);
-                    window.scrollTo({ top: sectionCenter, behavior: 'smooth' });
-                }
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                question.classList.toggle('active');
             });
         });
+
+        document.getElementById('copyright-year').innerText = new Date().getFullYear();
     </script>
 
 </body>
